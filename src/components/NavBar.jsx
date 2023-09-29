@@ -1,8 +1,14 @@
-const NavBar = ({ handleNext, handlePrevious, showPrevious, showNext }) => {
+const NavBar = ({ pokemonList, handlePokemonChange }) => {
+  console.log(pokemonList);
   return (
     <nav>
-      {showNext && <button onClick={handleNext}>Suivant</button>}
-      {showPrevious && <button onClick={handlePrevious}>Précédent</button>}
+      {pokemonList.map((pokemon, index) => {
+        return (
+          <button onClick={handlePokemonChange} value={index} key={index}>
+            {pokemon.name}
+          </button>
+        );
+      })}
     </nav>
   );
 };

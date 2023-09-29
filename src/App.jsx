@@ -6,25 +6,14 @@ import { useState } from "react";
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  const handleNext = () => {
-    setPokemonIndex(pokemonIndex + 1);
+  const handlePokemonChange= (e) => {
+   setPokemonIndex(e.target.value)
   };
-  const handlePrevious = () => {
-    setPokemonIndex(pokemonIndex - 1);
-  };
-
-  const showPrevious = pokemonIndex > 0;
-  const showNext = pokemonIndex < pokemonList.length - 1;
 
   return (
     <>
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      <NavBar
-        handleNext={handleNext}
-        handlePrevious={handlePrevious}
-        showPrevious={showPrevious}
-        showNext={showNext}
-      />
+      <NavBar pokemonList={pokemonList} handlePokemonChange={handlePokemonChange}/>
     </>
   );
 }
